@@ -38,7 +38,8 @@ app.add_url_rule('/ingredients/<string:id>', view_func=FlaskIngredients.get, end
 app.add_url_rule('/ingredients', view_func=FlaskIngredients.insert, endpoint='ingredients_insert', methods=['POST'])
 
 app.add_url_rule('/units', view_func=FlaskUnits.getAll, endpoint='units_get_all', methods=['GET'])
-app.add_url_rule('/units/:id', view_func=FlaskUnits.get, endpoint='units_get', methods=['GET'])
+app.add_url_rule('/units/<string:id>', view_func=FlaskUnits.get, endpoint='units_get', methods=['GET'])
+app.add_url_rule('/units', view_func=FlaskUnits.insert, endpoint='units_insert', methods=['POST'])
 
 app.add_url_rule('/tags', view_func=FlaskTags.get, endpoint='tags_get_all', methods=['GET'])
 app.add_url_rule('/tags/:id', view_func=FlaskTags.getAll, endpoint='tags_get', methods=['GET'])
