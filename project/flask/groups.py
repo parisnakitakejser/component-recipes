@@ -2,7 +2,7 @@ import logging
 from flask import Response, request
 from bson.json_util import dumps, loads
 
-from library.odm.groups import Groups as OdmGroups
+from project.odm.groups import Groups as OdmGroups
 
 class FlaskGroups:
     @staticmethod

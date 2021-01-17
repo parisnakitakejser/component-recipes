@@ -2,7 +2,7 @@ import logging
 from flask import Response, request
 from bson.json_util import dumps, loads
 
-from library.odm.units import Units as OdmUnits
+from project.odm.units import Units as OdmUnits
 
 class FlaskUnits:
     @staticmethod

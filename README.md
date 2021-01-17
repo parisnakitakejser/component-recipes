@@ -37,8 +37,9 @@ If you found eny bugs and want to build your own images, you can do it very quic
 
 If you want to run test after you have change code or just want to check all tests out, its can be done by build a unittest images and run the unittest images after in a single docker container.
 
+    docker run -d --name testmongo -e 'MONGO_INITDB_ROOT_USERNAME=admin' -e 'MONGO_INITDB_ROOT_PASSWORD=secret' mongo:4.4
     docker build -t unittest . -f .docker/Unittest/Dockerfile
-    docker run --rm unittest
+    docker run --rm --link testmongo -e 'MONGO_DATABASE=component-recipes' -e 'MONGO_HOST=testmongo' -e 'MONGO_PORT=27017' -e 'MONGO_USERNAME=admin' -e 'MONGO_PASSWORD=secret' -e 'MONGO_AUTH_SOURCE=admin' -e 'MONGO_MECHANISM=SCRAM-SHA-1' unittest
 
 **docker-compose.yaml sample**
 

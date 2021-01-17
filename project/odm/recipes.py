@@ -1,6 +1,6 @@
 from mongoengine import Document, StringField, IntField, ListField, ReferenceField
-from library.odm.tags import Tags
-from library.odm.ingredients import Ingredients
+from project.odm.tags import Tags
+from project.odm.ingredients import Ingredients
 
 class RecipesIngredients(Documents):
     ingredients = ReferenceField('Ingredients')
