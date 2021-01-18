@@ -2,7 +2,7 @@ import logging
 from flask import Response, request
 from bson.json_util import dumps, loads
 
-from library.odm.ingredients import Ingredients as OdmIngredients, IngredientsBarcode as OdmIngredientsBarcode
+from project.odm.ingredients import Ingredients as OdmIngredients, IngredientsBarcode as OdmIngredientsBarcode
 
 class FlaskIngredients:
     @staticmethod
