@@ -40,6 +40,7 @@ If you want to run test after you have change code or just want to check all tes
     docker run -d --name testmongo -e 'MONGO_INITDB_ROOT_USERNAME=admin' -e 'MONGO_INITDB_ROOT_PASSWORD=secret' mongo:4.4
     docker build -t unittest . -f .docker/Unittest/Dockerfile
     docker run --rm --link testmongo -e 'MONGO_DATABASE=component-recipes' -e 'MONGO_HOST=testmongo' -e 'MONGO_PORT=27017' -e 'MONGO_USERNAME=admin' -e 'MONGO_PASSWORD=secret' -e 'MONGO_AUTH_SOURCE=admin' -e 'MONGO_MECHANISM=SCRAM-SHA-1' unittest
+    docker stop testmongo
 
 **docker-compose.yaml sample**
 
