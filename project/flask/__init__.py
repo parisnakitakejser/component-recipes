@@ -24,7 +24,7 @@ def create_app(config_filename=None, instance_relative_config=True):
     app.wsgi_app = DBConnect(app.wsgi_app)
 
     app.add_url_rule('/recipes', view_func=FlaskRecipes.getAll, endpoint='recipes_get_all', methods=['GET'])
-    app.add_url_rule('/recipes/:id', view_func=FlaskRecipes.get, endpoint='recipes_get', methods=['GET'])
+    app.add_url_rule('/recipes/<string:id>', view_func=FlaskRecipes.get, endpoint='recipes_get', methods=['GET'])
     app.add_url_rule('/recipes/:id', view_func=FlaskRecipes.replace, endpoint='recipes_replace', methods=['PUT'])
     app.add_url_rule('/recipes/:id', view_func=FlaskRecipes.delete, endpoint='recipes_delete', methods=['DELETE'])
     app.add_url_rule('/recipes', view_func=FlaskRecipes.insert, endpoint='recipes_insert', methods=['POST'])
