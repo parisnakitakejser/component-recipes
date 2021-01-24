@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from flask import Response, request
 from bson.json_util import dumps, loads
 
-from project.odm.recipes import Recipes as OdmRecipes, RecipesIngredients as OdmRecipesIngredients 
+from project.odm.recipes import Recipes as OdmRecipes, RecipesIngredients as OdmRecipesIngredients , RecipesProcedure as OdmRecipesProcedure
 
 
 class FlaskRecipes:
@@ -47,6 +47,7 @@ class FlaskRecipes:
                 '_id': '$_id',
                 'ingredients': {'$push': '$ingredients' },
                 "title": { "$first": "$title" },
+                "description": { "$first": "$description" },
                 "url": { "$first": "$url" },
                 "procedure": { "$first": "$procedure" },
                 "durability": { "$first": "$durability" },
@@ -81,7 +82,15 @@ class FlaskRecipes:
         recipe = OdmRecipes()
         recipe.title = data.get('title')
         recipe.url = data.get('url')
-        recipe.procedure = data.get('procedure')
+
+        for procedure in data.get('procedure'):
+            procedures = OdmRecipesProcedure()
+            procedures.title = procedure['title']
+            procedures.description = procedure['description']
+            procedures.photo = procedure['photo']
+
+            recipe.procedure.append(procedures)
+
         recipe.durability = data.get('durability')
         recipe.number_of_people = data.get('number_of_people')
         recipe.working_time = data.get('working_time')

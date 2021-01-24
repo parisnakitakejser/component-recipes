@@ -8,12 +8,18 @@ class RecipesIngredients(EmbeddedDocument):
     unit_id = ReferenceField(Units, dbref=True)
     qty = FloatField()
 
+class RecipesProcedure(EmbeddedDocument):
+    title = StringField()
+    description = StringField()
+    photo = StringField()
+
 class Recipes(Document):
     user_key = StringField()
 
     title = StringField()
     url = StringField()
-    procedure = StringField()
+    description = StringField()
+    procedure = ListField(EmbeddedDocumentField(RecipesProcedure))
     durability = IntField()
     number_of_people = IntField()
     working_time = IntField()
